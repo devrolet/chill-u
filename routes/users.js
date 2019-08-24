@@ -104,4 +104,10 @@ router.post('/register', function(req, res, next) {
   }
 });
 
+router.post('/login', passport.authenticate(failureRedirect:'/', failureFlash: true), function(req, res, next) {
+  req.flash('success_msg', 'You are now logged in');
+  var usertype = req.user.type;
+  res.redirect('/'+usertype+'s/classes');
+});
+
 module.exports = router;
