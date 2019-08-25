@@ -1,8 +1,16 @@
-<h5>Student Login</h5>
-<form class="login-form" method="post" action="/users/login">
-    
-    <input type="text" name="username" placeholder="Enter Username"><br>
-    
-    <input type="password" name="password" placeholder="Enter Password"><br>
-    <input type="submit" value="submit" class="btn btn-success">
-</form>
+{{#if user}}
+    <h5>Welcome Back {{user.username}}</h5>
+    <ul class="alt">
+        <li><a href="/{{type}}s/classes">My Classes</a></li>
+        <li><a href="/users/logout">Logout</a></li>
+    </ul>
+{{else}}
+<h5>Student &amp; Instructor Login</h5>
+    <form class="login-form" method="post" action="/users/login">
+        <label>Username: </label>
+        <input type="text" name="username" placeholder="Enter Username"><br>
+        <label>Password: </label>
+        <input type="password" name="password" placeholder="Enter Password"><br>
+        <input type="submit" value="submit" class="btn btn-success">
+    </form>
+{{/if}}

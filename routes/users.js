@@ -140,4 +140,12 @@ passport.use(new LocalStrategy(
   }
 ));
 
+// Log User Out
+router.get('/logout', function(req, res) {
+  req.logout();
+  // Success Message
+  req.flash('success_msg', 'You have logged out');
+  res.redirect('/');
+});
+
 module.exports = router;
